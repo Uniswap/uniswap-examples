@@ -13,6 +13,10 @@ interface ExampleConfig {
     arbitrum: string
     bsc: string
     blast: string
+    base: string
+    avax: string
+    celo: string
+    zora: string
   }
 }
 
@@ -20,10 +24,14 @@ interface ExampleConfig {
 export const CurrentConfig: ExampleConfig = {
   chain: Chain.MAINNET,
   rpc: {
-    polygon: '',
-    mainnet: '',
+    polygon: 'https://polygon-mainnet.infura.io/v3/ddee64bef51f4b17b83aebdbff316876',
+    mainnet: 'https://mainnet.infura.io/v3/ddee64bef51f4b17b83aebdbff316876',
     arbitrum: '',
     bsc: '',
     blast: '',
+    base: '',
+    avax: '',
+    celo: '',
+    zora: '',
   },
 }

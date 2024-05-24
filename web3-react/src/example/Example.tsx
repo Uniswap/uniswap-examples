@@ -198,6 +198,8 @@ const Example = () => {
         token: tokenIn,
         chainId,
         includeGasInfo: true,
+        tokenOut,
+        tokenOutChainId: chainId,
       },
       {
         headers,
@@ -218,7 +220,7 @@ const Example = () => {
     }
 
     let postOrderResponse
-    if (routing === 'CLASSIC') {
+    if (routing === 'CLASSIC' || routing === 'WRAP' || routing === 'UNWRAP') {
       postOrderResponse = await axios.post(
         `${API_URL}/swap`,
         {
@@ -285,11 +287,15 @@ const Example = () => {
   const mainnetBullet = '0x8ef32a03784c8Fd63bBf027251b9620865bD54B6'
   const mainnetBtc = '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'
 
+  const baseWeth = '0x4200000000000000000000000000000000000006'
+
+  const zoraWeth = '0x4200000000000000000000000000000000000006'
+
   const defaultNative = '0x0000000000000000000000000000000000000000'
 
-  const [tokenIn, setTokenIn] = useState(arbWeth)
-  const [tokenOut, setTokenOut] = useState(arbAxie)
-  const [amount, setAmount] = useState('500000000')
+  const [tokenIn, setTokenIn] = useState(defaultNative)
+  const [tokenOut, setTokenOut] = useState(zoraWeth)
+  const [amount, setAmount] = useState('10000')
   const [routingPreference, setRoutingPreference] = useState(RoutingPreference.CLASSIC)
 
   const exactIn = 'EXACT_INPUT'
@@ -300,7 +306,12 @@ const Example = () => {
   const op = 10
   const mainnet = 1
   const blast = 81457
-  const [chainId, setChainId] = useState(arb)
+  const base = 8453
+  const AVAX_CHAIN = 43114
+  const CELO_CHAIN = 42220
+  const ZORA_CHAIN = 7777777
+  const [chainId, setChainId] = useState(CELO_CHAIN)
+  const [tokenOutChainId, setTokenOutChainId] = useState(CELO_CHAIN)
 
   return (
     <div className="App">
@@ -324,6 +335,17 @@ const Example = () => {
               type="text"
               value={chainId}
               onChange={(event) => setChainId(Number(event.target.value))}
+            />
+          </label>
+          <p />
+          <label>
+            Token Out Chain Id:
+            <p />
+            <input
+              style={{ width: 400 }}
+              type="text"
+              value={tokenOutChainId}
+              onChange={(event) => setTokenOutChainId(Number(event.target.value))}
             />
           </label>
           <p />

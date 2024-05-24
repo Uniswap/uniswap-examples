@@ -6,6 +6,10 @@ const POLYGON_CHAIN_ID = 137
 const ARBITRUM_CHAIN_ID = 42161
 const BNB_CHAIN_ID = 56
 const BLAST_CHAIN = 81457
+const BASE_CHAIN = 8453
+const AVAX_CHAIN = 43114
+const CELO_CHAIN = 42220
+const ZORA_CHAIN = 7777777
 
 export const INPUT_CHAIN_ID = CurrentConfig.chain === Chain.POLYGON ? POLYGON_CHAIN_ID : MAINNET_CHAIN_ID
 export const INPUT_CHAIN_URL =
@@ -58,6 +62,30 @@ export const CHAIN_INFO: { [key: string]: ChainInfo } = {
     label: 'Blast Chain',
     nativeCurrency: { name: 'BLAST', symbol: 'BLAST', decimals: 18 },
     rpcUrl: CurrentConfig.rpc.blast,
+  },
+  [BASE_CHAIN]: {
+    explorer: 'https://basescan.org/',
+    label: 'BASE Chain',
+    nativeCurrency: { name: 'BASE', symbol: 'BASE', decimals: 18 },
+    rpcUrl: CurrentConfig.rpc.base,
+  },
+  [AVAX_CHAIN]: {
+    explorer: 'https://basescan.org/',
+    label: 'AVAX Chain',
+    nativeCurrency: { name: 'AVAX', symbol: 'AVAX', decimals: 18 },
+    rpcUrl: CurrentConfig.rpc.base,
+  },
+  [CELO_CHAIN]: {
+    explorer: 'https://basescan.org/',
+    label: 'CELO Chain',
+    nativeCurrency: { name: 'CELO', symbol: 'BASE', decimals: 18 },
+    rpcUrl: CurrentConfig.rpc.base,
+  },
+  [ZORA_CHAIN]: {
+    explorer: 'https://basescan.org/',
+    label: 'ZORA Chain',
+    nativeCurrency: { name: 'Ether', symbol: 'Ether', decimals: 18 },
+    rpcUrl: CurrentConfig.rpc.base,
   },
 }
 
